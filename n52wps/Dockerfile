@@ -168,10 +168,14 @@ RUN chown tomcat7:tomcat7 /usr/local/grass-7.0.0svn/demolocation && \
 # For debugging
 COPY wps/logback_debug.xml /usr/share/tomcat7-wps/wps/WEB-INF/classes/logback.xml
 
+
 # Hack to fix 3.3.1
 RUN cd /usr/share/tomcat7-wps/ && \
     mv wps wpshome
 
+# add R script
+COPY wps/R/myrscript.R /usr/share/tomcat7-wps/wpshome/myrscript.R
+    
 # Set Heap Settings for Tomcat
 ENV CATALINA_OPTS -Xmx2048m -Xms48m -XX:MaxPermSize=512m
 
