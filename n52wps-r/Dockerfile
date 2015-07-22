@@ -273,6 +273,13 @@ ENV CATALINA_OPTS -Xmx2048m -Xms48m -XX:MaxPermSize=512m
 
 WORKDIR /var/grass/tmp
 
+# cp R files to deploy
+COPY r-scripts/*.R /usr/share/tomcat7-wps/wpshome/R/scripts/
+
+# copy geotiff example to /tmp/
+COPY geotiff/pt100_6b.tiff /tmp/
+
+
 # Ports
 EXPOSE 8080
 
